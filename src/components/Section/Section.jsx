@@ -1,4 +1,7 @@
-const Section = ({ title, children }) => {
+// import PropTypes from 'prop-types';
+
+
+export const Section = ({ title, children }) => {
     return (
         <div>
             <h2>{title}</h2>
@@ -7,4 +10,8 @@ const Section = ({ title, children }) => {
     );
 };
 
-export default Section;
+
+// Section.PropTypes = {
+//     title: PropTypes.string.isRequired,
+// };
+// export default Section;

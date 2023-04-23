@@ -1,7 +1,8 @@
 import { Component } from "react";
 import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
 import { Statistics } from "./Statistics/Statistics";
-import { Notification } from './Notification/Notification';
+import { Notification } from "./Notification/Notification";
+import { Section } from "./Section/Section";
 
 
 
@@ -12,7 +13,14 @@ export class App extends Component {
     bad: 0
   };
 
-  onLeavefeedback = option => { this.setState(prevState => ({ [option]: prevState[option] + 1 })) };
+  // onLeavefeedback = option => { this.setState(prevState => {return { [option]: prevState[option] + 1 } )};
+  onLeavefeedback = option => {
+    this.setState (prevState => {
+      return {
+       [option]: prevState[option] + 1,
+      };
+    });
+  };
 
   countTotalFeedback = () => {
     const { good, neutral, bad } = this.state;
@@ -26,22 +34,23 @@ export class App extends Component {
   };
 
   render() {
+    const positivePercentage = this.countPositiveFeedbackPercentage();
       return (
       <div>
-        <section title='Please Leave feedback'>
-          <FeedbackOptions options={Object.keys(this.state)} onLeavefeedback={this.updateState} />
+        <Section title='Please Leave feedback'>
+          <FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.onLeavefeedback} />
 
-          </section>
+          </Section>
 
-          <section title="Statistics">
+          <Section title="Statistics">
             {this.countTotalFeedback() === 0 ? (<Notification message='There is no feedback yet...' />) : (
-              <Statistics options={Object.keys(this.state)}
-                statistic={this.state}
+              <Statistics options={this.state}
+                // statistic={this.state}
                 total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage} />
+              positivePercentage={positivePercentage} />
             )}
 
-          </section>
+          </Section>
           
 
 
@@ -52,4 +61,4 @@ export class App extends Component {
   };
 }
 
-export default App;
+// export default App;

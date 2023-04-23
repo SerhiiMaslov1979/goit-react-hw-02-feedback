@@ -1,11 +1,17 @@
-
-export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
-    <div>
-        {options.map((name, i) => {
+// import PropTypes from 'prop-types';
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+    console.log(onLeaveFeedback);
+    return (
+         <div>
+        {options.map((option) => {
             return (
-                <button key={name + i} onClick={() => onLeaveFeedback(name)}>
-                    {name}
+                <button type="button" key={option} onClick={() => onLeaveFeedback(option)}>
+                    {option}
                 </button>
-            )} )}
+            )
+        })}
+        
     </div>
+    )
+   
 }
