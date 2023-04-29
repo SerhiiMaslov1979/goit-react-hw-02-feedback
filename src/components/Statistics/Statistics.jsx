@@ -1,3 +1,4 @@
+// import PropTypes from 'prop-types';
 export const Statistics = ({ options, total, positivePercentage }) => {
     console.log(options);
     const { good, neutral, bad } = options;
@@ -13,3 +14,5 @@ export const Statistics = ({ options, total, positivePercentage }) => {
 
     
 };
+
+
